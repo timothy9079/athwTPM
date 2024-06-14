@@ -96,23 +96,6 @@ static uint32_t gn_starttick;
 extern int is_processing;
 extern uint8_t respbuf [ ATHW_TPM_SPI_FRAME_SZ + ATHW_TPM_TIS_HEADER_SZ ];
 
-const struct athw_fs_config cfg = {
-    // block device operations
-    .read  = athw_fs_rambd_read,
-    .prog  = athw_fs_rambd_prog,
-    .erase = athw_fs_rambd_erase,
-    .sync  = athw_fs_rambd_sync,
-
-    // block device configuration
-    .read_size = 16,
-    .prog_size = 16,
-    .block_size = 4096,
-    .block_count = 128,
-    .cache_size = 16,
-    .lookahead_size = 16,
-    .block_cycles = 500,
-};
-
 
 static void consume_spi_rxfifo(void *handle) 
 {
