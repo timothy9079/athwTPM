@@ -1,0 +1,479 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    TemplateName="Other C/C++"
+    WorkingDir=".">
+    <Config
+        Name="Debug"
+        Type="cpp"
+        DebugCallbackName="gdb"
+        OutputFile="%bdathw_eval_dev"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                CaptureOutputWith="ProcessBuffer"
+                OutputExts="*.o"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='cc -c -g %i %defd -o "%bd%n.o" "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link">
+                <Exec CmdLine='cc -g -o "%o" %f %libs'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='vsdebugio -prog "%o"'/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%o"'/>
+            </Target>
+        </Menu>
+    </Config>
+    <Config
+        Name="Release"
+        Type="cpp"
+        DebugCallbackName="gdb"
+        OutputFile="%bdathw_eval_dev"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveCurrent"
+                OutputExts="*.o"
+                RunFromDir="%rw">
+                <Exec CmdLine='cc -c -O %i %defd -o "%bd%n.o" "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link">
+                <Exec CmdLine='cc -O -o "%o" %f %libs'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='vsdebugio -prog "%o"'/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%o"'/>
+            </Target>
+        </Menu>
+    </Config>
+    <Rules Name="Compile">
+        <Rule
+            InputExts="*.s"
+            OutputExts="*.o"
+            LinkObject="1">
+            <Exec CmdLine='as -o "%bd%n.o" "%f"'/>
+        </Rule>
+    </Rules>
+    <CustomFolders>
+        <Folder
+            Name="Source Files"
+            Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.scala;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go;*.groovy;*.gsh"
+            GUID="{30323CA4-852E-44CC-B274-CF38CE44855E}"></Folder>
+        <Folder
+            Name="Header Files"
+            Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.h++;*.inc;*.sh;*.cpy;*.if"
+            GUID="{C6B05E79-CD76-495D-A884-9D4403EA399E}"></Folder>
+        <Folder
+            Name="Resource Files"
+            Filters="*.ico;*.cur;*.dlg"
+            GUID="{BFDFB2CD-C1A2-4771-B1E3-E0682DD2E21A}"/>
+        <Folder
+            Name="Bitmaps"
+            Filters="*.bmp"
+            GUID="{A82FCD31-9603-426B-B236-29DAC7C69076}"/>
+        <Folder
+            Name="Other Files"
+            Filters=""
+            GUID="{7762D174-9365-4211-80B8-A99CBEDE74FB}"></Folder>
+    </CustomFolders>
+    <List Name="RTE">
+    </List>
+    <Files AutoFolders="DirectoryView">
+        <Folder Name="App">
+            <Folder Name="include">
+                <F N="App/include/athw_errno.h"/>
+                <F N="App/include/athw_system.h"/>
+                <F N="App/include/athw_toolchain.h"/>
+                <F N="App/include/athw_tpm2.h"/>
+                <F N="App/include/athw_tpm2_packet.h"/>
+                <F N="App/include/athw_tpm2_types.h"/>
+                <F N="App/include/athw_tpm_tis.h"/>
+                <F N="App/include/configs.h"/>
+                <F N="App/include/main.h"/>
+                <F N="App/include/stm32l4xx_hal_conf.h"/>
+                <F N="App/include/stm32l4xx_it.h"/>
+            </Folder>
+            <Folder Name="source">
+                <F N="App/source/athw_pkt_process.c"/>
+                <F N="App/source/athw_system.c"/>
+                <F N="App/source/athw_tpm2.c"/>
+                <F N="App/source/athw_tpm2_packet.c"/>
+                <F N="App/source/athw_tpm_tis.c"/>
+                <F N="App/source/handler.c"/>
+                <F N="App/source/main.c"/>
+                <F N="App/source/stm32l4xx_it.c"/>
+            </Folder>
+            <Folder Name="startup">
+                <F N="App/startup/startup_stm32l476xx.s"/>
+            </Folder>
+        </Folder>
+        <Folder Name="ATHW_EVAL_BSP">
+            <Folder Name="inc">
+                <F N="ATHW_EVAL_BSP/inc/athw_eval_it.h"/>
+                <F N="ATHW_EVAL_BSP/inc/athw_it_types.h"/>
+                <F N="ATHW_EVAL_BSP/inc/athw_tpm_io.h"/>
+                <F N="ATHW_EVAL_BSP/inc/athw_tpmio_types.h"/>
+            </Folder>
+            <Folder Name="src">
+                <F N="ATHW_EVAL_BSP/src/athw_eval_it.c"/>
+                <F N="ATHW_EVAL_BSP/src/athw_eval_tpm.c"/>
+                <F N="ATHW_EVAL_BSP/src/athw_host_spi.c"/>
+                <F N="ATHW_EVAL_BSP/src/athw_tpm_io.c"/>
+                <F N="ATHW_EVAL_BSP/src/athw_tpm_spi.c"/>
+            </Folder>
+        </Folder>
+        <Folder Name="STM32-base-STM32Cube">
+            <Folder Name="CMSIS">
+                <Folder Name="ARM">
+                    <Folder Name="inc">
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/cmsis_armcc.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/cmsis_armclang.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/cmsis_compiler.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/cmsis_gcc.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/cmsis_iccarm.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/cmsis_version.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_armv8mbl.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_armv8mml.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_cm0.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_cm0plus.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_cm23.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_cm3.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_cm33.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_cm4.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_cm7.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_sc000.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/core_sc300.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/mpu_armv7.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/mpu_armv8.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/ARM/inc/tz_context.h"/>
+                    </Folder>
+                </Folder>
+                <Folder Name="STM32L4xx">
+                    <Folder Name="inc">
+                        <F N="STM32-base-STM32Cube/CMSIS/STM32L4xx/inc/stm32l476xx.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/STM32L4xx/inc/stm32l4xx.h"/>
+                        <F N="STM32-base-STM32Cube/CMSIS/STM32L4xx/inc/system_stm32l4xx.h"/>
+                    </Folder>
+                    <Folder Name="src">
+                        <F N="STM32-base-STM32Cube/CMSIS/STM32L4xx/src/system_stm32l4xx.c"/>
+                    </Folder>
+                </Folder>
+            </Folder>
+            <Folder Name="HAL">
+                <Folder Name="STM32L4xx">
+                    <Folder Name="inc">
+                        <Folder Name="Legacy">
+                            <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/Legacy/stm32_hal_legacy.h"/>
+                            <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/Legacy/stm32l4xx_hal_can_legacy.h"/>
+                        </Folder>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32_assert_template.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_adc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_adc_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_can.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_comp.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_conf_template.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_cortex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_crc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_crc_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_cryp.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_cryp_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_dac.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_dac_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_dcmi.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_def.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_dfsdm.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_dfsdm_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_dma.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_dma2d.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_dma_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_dsi.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_exti.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_firewall.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_flash.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_flash_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_flash_ramfunc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_gfxmmu.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_gpio.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_gpio_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_hash.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_hash_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_hcd.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_i2c.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_i2c_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_irda.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_irda_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_iwdg.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_lcd.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_lptim.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_ltdc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_ltdc_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_mmc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_mmc_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_nand.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_nor.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_opamp.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_opamp_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_ospi.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_pcd.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_pcd_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_pwr.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_pwr_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_qspi.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_rcc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_rcc_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_rng.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_rtc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_rtc_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_sai.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_sai_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_sd.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_sd_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_smartcard.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_smartcard_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_smbus.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_spi.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_spi_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_sram.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_swpmi.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_tim.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_tim_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_tsc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_uart.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_uart_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_usart.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_usart_ex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_hal_wwdg.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_adc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_bus.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_comp.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_cortex.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_crc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_crs.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_dac.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_dma.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_dma2d.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_dmamux.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_exti.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_fmc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_gpio.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_i2c.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_iwdg.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_lptim.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_lpuart.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_opamp.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_pwr.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_rcc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_rng.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_rtc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_sdmmc.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_spi.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_swpmi.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_system.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_tim.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_usart.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_usb.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_utils.h"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/inc/stm32l4xx_ll_wwdg.h"/>
+                    </Folder>
+                    <Folder Name="src">
+                        <Folder Name="Legacy">
+                            <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/Legacy/stm32l4xx_hal_can.c"/>
+                        </Folder>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_adc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_adc_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_can.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_comp.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_cortex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_crc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_crc_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_cryp.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_cryp_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_dac.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_dac_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_dcmi.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_dfsdm.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_dfsdm_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_dma.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_dma2d.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_dma_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_dsi.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_exti.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_firewall.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_flash.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_flash_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_flash_ramfunc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_gfxmmu.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_gpio.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_hash.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_hash_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_hcd.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_i2c.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_i2c_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_irda.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_iwdg.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_lcd.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_lptim.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_ltdc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_ltdc_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_mmc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_mmc_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_msp_template.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_nand.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_nor.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_opamp.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_opamp_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_ospi.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_pcd.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_pcd_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_pwr.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_pwr_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_qspi.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_rcc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_rcc_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_rng.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_rtc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_rtc_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_sai.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_sai_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_sd.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_sd_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_smartcard.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_smartcard_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_smbus.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_spi.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_spi_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_sram.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_swpmi.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_tim.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_tim_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_timebase_tim_template.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_tsc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_uart.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_uart_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_usart.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_usart_ex.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_hal_wwdg.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_adc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_comp.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_crc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_crs.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_dac.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_dma.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_dma2d.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_exti.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_fmc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_gpio.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_i2c.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_lptim.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_lpuart.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_opamp.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_pwr.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_rcc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_rng.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_rtc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_sdmmc.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_spi.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_swpmi.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_tim.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_usart.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_usb.c"/>
+                        <F N="STM32-base-STM32Cube/HAL/STM32L4xx/src/stm32l4xx_ll_utils.c"/>
+                    </Folder>
+                </Folder>
+            </Folder>
+        </Folder>
+        <Folder Name="util">
+            <Folder Name="inc">
+                <F N="util/inc/x_bstream.h"/>
+                <F N="util/inc/x_common.h"/>
+                <F N="util/inc/x_defmacro.h"/>
+                <F N="util/inc/x_log.h"/>
+                <F N="util/inc/x_mem.h"/>
+                <F N="util/inc/x_time.h"/>
+                <F N="util/inc/x_typedef.h"/>
+            </Folder>
+            <Folder Name="src">
+                <F N="util/src/x_mem.c"/>
+                <F N="util/src/x_memprint.c"/>
+                <F N="util/src/x_time.c"/>
+            </Folder>
+        </Folder>
+        <F N="ATHW_EVAL.icf"/>
+        <F N="athw_vs_globaldef.h"/>
+        <F N="stm32l476xx_flash.icf"/>
+    </Files>
+</Project>
